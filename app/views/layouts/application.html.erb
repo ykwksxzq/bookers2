@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <script src="https://kit.fontawesome.com/3e35bd34ae.js" crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -14,16 +14,30 @@
 
   <body>
     <header>
+      <h1>Bookers</h1>
+
       <% if user_signed_in? %>
+       <lI>
+         <%= link_to "Home", books_path %>
+       </li>
        <li>
-         <%= link_to "Log Out", destroy_user_session_path, method: :delete %>
+         <%= link_to "Users", about_path %>
+       </li>
+       <li>
+         <%= link_to "Books", about_path%>
+       </li>
+       <li>
+         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
        </li>
       <% else %>
-       <li>
+        <li>
          <%= link_to "Home", root_path %>
        </li>
        <li>
-         <%#= link_to "Users", %>
+         <%= link_to "About", about_path %>
+       </li>
+       <li>
+         <%= link_to "Sign up", new_user_registration_path %>
        </li>
        <li>
          <%= link_to "Log in", new_user_session_path %>
@@ -31,8 +45,14 @@
        <% end %>
     </header>
 
-
+    <main>
 
     <%= yield %>
+    </main>
+
+
+    <footer>
+        <p>CopyRight Infratop.inc</p>
+    </footer>
   </body>
 </html>
