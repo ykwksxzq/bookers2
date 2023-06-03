@@ -2,9 +2,10 @@
 <html>
   <head>
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <script src="https://kit.fontawesome.com/3e35bd34ae.js" crossorigin="anonymous"></script>
 
@@ -12,37 +13,54 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <header>
-      <h1>Bookers</h1>
+  <body class="d-flex flex-column vh-100">
+    <header class="shadow-sm">
+    <nav class="navbar navber-expand-lg navber-dark bg-dark">
+     <div class="container-fluid">
+      <a class="navbar-brand text-white" href="/"><span>Bookers</span></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                    aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-<div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav ml-auto">
 
       <% if user_signed_in? %>
-       <lI>
-         <%= link_to "Home", books_path %>
+       <li class="nav-item">
+         <%= link_to "Home", books_path, class: 'nav-link text-white'%>
        </li>
-       <li>
-         <%= link_to "Users", about_path %>
+       <li class="nav-item">
+         <%= link_to "Users", about_path, class: 'nav-link text-white' %>
        </li>
-       <li>
-         <%= link_to "Books", about_path%>
+       <li class="nav-item">
+         <%= link_to "Books", about_path, class: 'nav-link text-white' %>
        </li>
-       <li>
-         <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+       <li class="nav-item">
+         <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-white' %>
        </li>
       <% else %>
-        <li>
-         <%= link_to "Home", root_path %>
+        <li class="nav-item">
+         <%= link_to "Home", root_path, class: 'nav-link text-white' %>
        </li>
-       <li>
-         <%= link_to "About", about_path %>
+       <li class="nav-item">
+         <%= link_to "About", about_path, class: 'nav-link text-white' %>
        </li>
-       <li>
-         <%= link_to "Sign up", new_user_registration_path %>
+       <li class="nav-item">
+         <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-white' %>
        </li>
-       <li>
-         <%= link_to "Log in", new_user_session_path %>
+       <li class="nav-item">
+         <%= link_to "Log in", new_user_session_path, class: 'nav-link text-white' %>
        </li>
        <% end %>
+
+
+
+       </ul>
+       </div>
+       </div>
+      </nav>
     </header>
 
     <main>
@@ -52,7 +70,13 @@
 
 
     <footer>
-        <p>CopyRight Infratop.inc</p>
+     <div class="container mt-5">
+      <div class="row">
+        <div class="mx-auto">
+           <p>CopyRight Infratop.inc</p>
+        </div>
+      </div>
+     </div>
     </footer>
   </body>
 </html>
