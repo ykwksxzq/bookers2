@@ -14,6 +14,8 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book = Book.new(book_params)
+    
   end
 
   def edit

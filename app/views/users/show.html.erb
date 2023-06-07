@@ -1,2 +1,10 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<!--マイページ-->
+
+<h1>User info</h1>
+<%= image_tag @user.get_profile_image(100,100) %>
+<p>Name <%= @user.name %></p>
+<p>introduction <%= @user.introduction %></p>
+
+<%= button_to edit_user_path, method: :get do %>
+  <i class="fa-solid fa-user-gear"></i>
+<% end %>
