@@ -9,21 +9,3 @@
   <i class="fa-solid fa-user-gear"></i>
 <% end %>
 
-
-<h1>New book</h1>
-<%= form_with model: @book do |f| %>
-
-<div class="field">
-<label for="book_title">Title</label>
- <%= f.text_field :title %>
-</div>
-
-<div class="field">
-<ladel for="book_body">Opinion</ladel>
- <%= f.text_area :body %>
-</div>
-
-<div class="actions">
- <%= f.submit 'Create Book' %>
-</div>
- <% end %>
