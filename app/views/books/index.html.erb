@@ -2,6 +2,10 @@
 <!--<p>Find me in app/views/books/index.html.erb</p>-->
 
 
+<%= render 'users/info', user: current_user %>
+<%= render 'books/newbook', book: @book %>
+
+
  <h1>Books</h1>
 
  <table>
