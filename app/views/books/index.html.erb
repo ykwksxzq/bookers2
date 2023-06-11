@@ -1,6 +1,15 @@
 <!--<h1>Books#index</h1>-->
 <!--<p>Find me in app/views/books/index.html.erb</p>-->
 
+<% if @book.errors.any? %>
+  <%= @book.errors.count %> errors prohibited this obj from being saved:
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+  <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <div class="container px-5 px-sm-0">
@@ -38,7 +47,6 @@
  <% end %>
  </tbody>
  </table>
-
 </div>
 </div>
 </div>
