@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
 
-  before_action :is_matching_login_user, only: [:edit, :update]
+  before_action :is_matching_login_user, only: [:edit,:update]
 
   def create
     @book = Book.new(book_params)
@@ -14,7 +14,6 @@ class BooksController < ApplicationController
    end
   end
 
-
   def index
     @books = Book.all
     @book = Book.new
@@ -22,9 +21,9 @@ class BooksController < ApplicationController
   end
 
   def show
+    @book2 = Book.find(params[:id])
     @book = Book.new
-    @books = Book.all
-    @user = current_user
+    @user = @book2.user
   end
 
   def edit
@@ -37,7 +36,7 @@ class BooksController < ApplicationController
     flash[:notice] = "You have updated book successfully."
      redirect_to book_path(@book.id)
     else
-     render :index
+     render :edit
     end
   end
 
@@ -55,8 +54,8 @@ class BooksController < ApplicationController
   end
 
   def is_matching_login_user
-    user = User.find(params[:id])
-    unless user.id == current_user.id
+    @book = Book.find(params[:id])
+    unless @book.user.id == current_user.id
       redirect_to books_path
     end
   end
