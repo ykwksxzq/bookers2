@@ -17,7 +17,7 @@
     <tr>
       <th>image</th>
       <th>name</th>
-      <th collapse="3"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
   <tbody>
@@ -25,17 +25,17 @@
  <% @users.each do |user| %>
 
  <tr>
- <td>
+  <td>
   <%= image_tag user.get_profile_image(100,100) %>
- </td>
+  </td>
+  <td><%= user.name %></td>
+  <td><%= link_to "Show", user_path(user.id) %></td>
+  <% end %>
+ </tr>
 
- <td><%= user.name %></td>
-
- <td><%= link_to "Show", user_path(user.id) %></td>
-
- <% end %>
  </tbody>
  </table>
- </div>
+
+</div>
 </div>
 </div>
