@@ -13,7 +13,7 @@
     </tr>
   </thead>
   <tbody>
- <% books.each do |book| %>
+ <% @books.each do |book| %>
  <tr>
  <td><%= link_to user_path(book.user.id) do %>
   <%= image_tag book.user.get_profile_image(100,100) %>
@@ -31,14 +31,11 @@
   <% end %>
   <% else %>
   <%= link_to book_favorite_path(book), method: :post do %>
-  <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: primary">
-  <span>♡<%= book.favorites.count %></span>
+  ♡<%= book.favorites.count %>
   <% end %>
  <% end %>
  </td>
- <td></td>
-
-
+ <td>コメント数: <%= book.post_comments.count %></td>
  <% end %>
  </tr>
  </tbody>

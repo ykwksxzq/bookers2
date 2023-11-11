@@ -36,6 +36,9 @@
       <% end %>
       <% end %>
       </td>
+      <td>
+       コメント件数：<%= @book2.post_comments.count %>
+      </td>
 
 
       <% if @book2.user == current_user %>
@@ -45,6 +48,42 @@
      </tr>
     </tbody>
    </table>
+
+   <% @book2.post_comments.each do |post_comment| %>
+   <table class="table table-borderless">
+    <td>
+    <%= image_tag post_comment.user.get_profile_image(100, 100) %><br>
+    <%= link_to user_path(post_comment.user.id) do %>
+    <%= post_comment.user.name %>
+    <% end %>
+    </td>
+    <td>
+    <%= post_comment.comment %>
+    </td>
+    <td>
+     <% if post_comment.user == current_user %>
+     <%= link_to "Destroy", book_post_comment_path(post_comment.book, post_comment), class:"btn btn-sm btn-danger", method: :delete %>
+     <% end %>
+    </td>
+   </table>
+
+   <% end %>
+
+
+   <div>
+    <%= form_with model: [@book2, @post_comment] do |f| %>
+
+    <div class="form-group">
+    <%= f.text_area :comment, rows: '5', class: "form-control" %>
+    </div>
+    <%= f.submit "送信" %>
+  <% end %>
+</div>
+
+   </div>
+
+
+
   </div>
  </div>
 </div>
