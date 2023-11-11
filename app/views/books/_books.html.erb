@@ -8,6 +8,8 @@
       <th>Title</th>
       <th>Opinion</th>
       <th colspan="3"></th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -20,6 +22,23 @@
 
  <td><%= link_to book.title, book_path(book.id) %></td>
  <td><%= book.body %></td>
+
+ <td>
+  <% if book.favorited_by?(current_user) %>
+  <%= link_to book_favorite_path(book), method: :delete do %>
+  <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;">
+  <span>♥<%= book.favorites.count %></span>
+  <% end %>
+  <% else %>
+  <%= link_to book_favorite_path(book), method: :post do %>
+  <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: primary">
+  <span>♡<%= book.favorites.count %></span>
+  <% end %>
+ <% end %>
+ </td>
+ <td></td>
+
+
  <% end %>
  </tr>
  </tbody>
