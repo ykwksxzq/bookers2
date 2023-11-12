@@ -29,10 +29,17 @@ class BooksController < ApplicationController
      #.reverse →sort_byメソッドは値を昇順に並び替え
 
     @user = current_user
+
+     unless ViewCount.find_by(user_id: current_user.id, book_id: @book.id)
+      current_user.view_counts.create(book_id: @book.id)
+     end
   end
 
   def show
     @book2 = Book.find(params[:id])
+     unless ViewCount.find_by(user_id: current_user.id, book_id: @book2.id)
+      current_user.view_counts.create(book_id: @book2.id)
+     end
     @book = Book.new
     @user = @book2.user
     @post_comment = PostComment.new

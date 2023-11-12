@@ -9,6 +9,8 @@ class Book < ApplicationRecord
 
   has_many :post_comments, dependent: :destroy
 
+  has_many :view_counts, dependent: :destroy
+
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }

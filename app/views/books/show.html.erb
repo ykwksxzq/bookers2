@@ -31,6 +31,9 @@
       <td>
        コメント件数：<%= @book2.post_comments.count %>
       </td>
+      <td>
+       閲覧数: <%= @book2.view_counts.count %>
+      </td>
 
 
       <% if @book2.user == current_user %>
