@@ -15,8 +15,19 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
+    # @books = Book.all
     @book = Book.new
+     to = Time.current.at_end_of_day #現在日時を取得
+     from = (to - 6.day).at_beginning_of_day #時刻を23:59:59に設定
+
+    @books = Book.includes(:favorited_users). #Bookモデルのデータを取得
+     sort_by {|x| #値を 1つずつ xという変数に代入して、昇順に並び替える
+      x.favorited_users.includes(:favorites).where(created_at: from...to).size
+     }.reverse
+
+     #各Bookインスタンス(x)が持つ favorited_users のうち、favoritesのcreated_atが fromから toの間にあるものの数を取得
+     #.reverse →sort_byメソッドは値を昇順に並び替え
+
     @user = current_user
   end
 
