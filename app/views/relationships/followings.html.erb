@@ -1,0 +1,38 @@
+<div class="container">
+ <div class="row">
+  <div class="col-sm-12 col-md-8 col-lg-5 px-sm-0 mx-auto">
+
+  <h1>Follow Users</h1>
+
+  <% if @users.exists? %>
+ <table class="table">
+ <thead>
+    <tr>
+      <th>image</th>
+      <th>name</th>
+      <th colspan="3"></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @users.each do |user| %>
+
+  <tr>
+  <td>
+  <%= image_tag user.get_profile_image(100,100) %>
+  </td>
+  <td><%= user.name %></td>
+  <td>フォロー数: <%= user.followings.count %></td>
+  <td>フォロワー数: <%= user.followers.count %></td>
+  </tr>
+  <% end %>
+ </tbody>
+ </table>
+ <% else %>
+ <p>ユーザーはいません</p>
+ <% end %>
+
+</div>
+</div>
+</div>

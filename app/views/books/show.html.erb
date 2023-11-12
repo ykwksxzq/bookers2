@@ -49,26 +49,26 @@
     </tbody>
    </table>
 
-   <% @book2.post_comments.each do |post_comment| %>
-   <table class="table table-borderless">
-    <td>
-    <%= image_tag post_comment.user.get_profile_image(100, 100) %><br>
-    <%= link_to user_path(post_comment.user.id) do %>
-    <%= post_comment.user.name %>
-    <% end %>
-    </td>
-    <td>
-    <%= post_comment.comment %>
-    </td>
-    <td>
-     <% if post_comment.user == current_user %>
-     <%= link_to "Destroy", book_post_comment_path(post_comment.book, post_comment), class:"btn btn-sm btn-danger", method: :delete %>
+   <table>
+    <tbody>
+     <% @book2.post_comments.each do |post_comment| %>
+     <tr>
+      <td>
+        <%= image_tag post_comment.user.get_profile_image(100, 100) %><br>
+          <%= link_to user_path(post_comment.user.id) do %>
+          <%= post_comment.user.name %>
+        <% end %>
+      </td>
+      <td><%= post_comment.comment %></td>
+      <td>
+        <% if post_comment.user == current_user %>
+          <%= link_to "Destroy", book_post_comment_path(post_comment.book, post_comment), class:"btn btn-sm btn-danger", method: :delete %>
+        <% end %>
+      </td>
+     </tr>
      <% end %>
-    </td>
+    </tbody>
    </table>
-
-   <% end %>
-
 
    <div>
     <%= form_with model: [@book2, @post_comment] do |f| %>
