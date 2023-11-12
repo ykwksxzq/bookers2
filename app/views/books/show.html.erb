@@ -23,19 +23,11 @@
       </td>
       <td><%=link_to @book2.title, book_path(@book2.id) %></td>
       <td><%= @book2.body %></td>
-      <td>
-      <% if @book2.favorited_by?(current_user) %>
-      <%= link_to book_favorite_path(@book2), method: :delete do %>
-      <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: red;">
-      <span>♥<%= @book2.favorites.count %></span>
-      <% end %>
-      <% else %>
-      <%= link_to book_favorite_path(@book2), method: :post do %>
-      <span class="glyphicon glyphicon-heart" aria-hidden="true" style="color: primary">
-      <span>♡<%= @book2.favorites.count %></span>
-      <% end %>
-      <% end %>
+
+      <td id="favorite_buttons_<%= @book2.id %>">
+      <%= render "favorites/favorites", book: @book2 %>
       </td>
+
       <td>
        コメント件数：<%= @book2.post_comments.count %>
       </td>
