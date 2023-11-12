@@ -38,6 +38,15 @@
       <%= link_to "フォローする", user_relationships_path(user.id),class: "btn btn-success", method: :post %>
      <% end %>
      <% end %>
+
+     <% unless @user.id == current_user.id %>
+     <% if (current_user.following? @user) && (@user.following? current_user)  %>
+      <%= link_to 'Begin Chat', chat_path(@user.id) %>
+     <% end %>
+     <% end %>
+
+
+
      </div>
 
 
