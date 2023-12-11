@@ -36,7 +36,7 @@
       </td>
 
 
-      <% if @book2.user == current_user %>
+      <% if @book2.user.owns?(current_user) %>
       <td><%= link_to "Edit", edit_book_path(@book2.id), class: "btn btn-success" %></td>
       <td><%= link_to "Destroy", book_path(@book2.id), class:"btn btn-sm btn-danger", method: :delete,data: {confirm: "本当に削除しますか？"} %></td>
       <% end %>
