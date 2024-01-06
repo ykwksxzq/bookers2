@@ -19,7 +19,7 @@
                 </tr>
               </thead>
               <% @chats.each do |chat| %>
-                <% if chat.user_id == current_user.id %>
+                <% if chat.user.owns?(current_user) %>
                 <tbody>
                   <tr>
                     <th>
